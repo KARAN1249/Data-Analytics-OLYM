@@ -5,9 +5,18 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.figure_factory as ff
+athletes_url = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/athlete_events.csv"
+regions_url = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/noc_regions.csv"
 
-df = pd.read_csv('athlete_events.csv')
-region_df = pd.read_csv('noc_regions.csv')
+@st.cache_data
+def load_data():
+    df = pd.read_csv(athletes_url)
+    region_df = pd.read_csv(regions_url)
+    return df, region_df
+
+df, region_df = load_data()
+
+
 
 df = preprocessor.preprocess(df,region_df)
 
