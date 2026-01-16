@@ -44,6 +44,21 @@ if user_menu == 'Medal Tally':
     if selected_year != 'Overall' and selected_country != 'Overall':
         st.title(selected_country + " performance in " + str(selected_year) + " Olympics")
     st.table(medal_tally)
+st.title("Top Statistics")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.header("Editions")
+    st.title(editions)
+
+with col2:
+    st.header("Hosts")
+    st.title(cities)
+
+with col3:
+    st.header("Sports")
+    st.title(sports)
 
 if user_menu == 'Overall Analysis':
     editions = df['Year'].unique().shape[0] - 1
@@ -54,16 +69,7 @@ if user_menu == 'Overall Analysis':
     nations = df['region'].unique().shape[0]
 
     st.title("Top Statistics")
-    col1,col2,col3 = st.beta_columns(3)
-    with col1:
-        st.header("Editions")
-        st.title(editions)
-    with col2:
-        st.header("Hosts")
-        st.title(cities)
-    with col3:
-        st.header("Sports")
-        st.title(sports)
+   
 
     col1, col2, col3 = st.columns(3)
 
